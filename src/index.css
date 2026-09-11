@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0b1220;
+  color: #e8edf7;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+/* The app scrolls inside #root. Sticky headers and the bottom action bars in
+   the scoring flow are positioned against it, so this stays as it is. */
+#root {
+  overflow-x: hidden;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-ink-line/70 bg-ink-soft/80 p-4 shadow-lg shadow-black/20;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3
+      text-sm font-semibold transition active:scale-[.98] disabled:opacity-40
+      disabled:active:scale-100;
+  }
+
+  .btn-primary {
+    @apply btn bg-felt text-white shadow-lg shadow-felt/30 hover:bg-felt-light;
+  }
+
+  .btn-gold {
+    @apply btn bg-gold text-ink shadow-lg shadow-gold/20 hover:brightness-110;
+  }
+
+  .btn-ghost {
+    @apply btn border border-ink-line bg-ink-soft/60 text-slate-200 hover:bg-ink-soft;
+  }
+
+  .btn-danger {
+    @apply btn border border-loser/50 bg-loser/10 text-loser hover:bg-loser/20;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-ink-line bg-ink px-3.5 py-3 text-base
+      text-slate-100 outline-none placeholder:text-slate-500
+      focus:border-gold/70 focus:ring-2 focus:ring-gold/20;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-ink-line
+      bg-ink px-2.5 py-1 text-[11px] font-semibold text-slate-300;
+  }
+
+  .scroll-x {
+    @apply flex gap-2 overflow-x-auto pb-1;
+    scrollbar-width: thin;
+  }
+}
+
+/* The tile face. Built from type rather than images so it stays crisp and
+   works offline with no asset download. */
+.tile-face {
+  font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', 'Microsoft YaHei', serif;
+}

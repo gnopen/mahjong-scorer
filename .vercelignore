@@ -1,0 +1,9 @@
+# The deployed build needs src/, api/, shared/ and the config files. Everything
+# here is either rebuilt by Vercel or only used on a development machine.
+node_modules
+dist
+dist-artifact
+coverage
+.vercel
+server
+supabase
